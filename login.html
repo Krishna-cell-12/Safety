@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BioPulse - Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+  <link rel="stylesheet" href="css/login.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="left-panel">
+      <h1> Welcome to <br/>Safeline</h1>
+      <img src="https://media.istockphoto.com/id/901677582/photo/web-safety-and-security-concept.jpg?s=612x612&w=0&k=20&c=sy1SR5WVNR9B-_r3SCs2CBeRuhVMVkSkX5YwlPV6O2U=" alt="Biodiversity" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+    <div class="right-panel">
+      <h2 id="formTitle">Login</h2>
+      <p>Welcome! Login to continue exploring and contributing to Safelyne.</p>
+      <form id="authForm">
+        <input type="email" id="username" placeholder="Email" required />
+        <input type="password" id="password" placeholder="Password" required />
+        <div>
+          <input type="checkbox" id="rememberMe" /> <label for="rememberMe"> Remember me</label>
+        </div>
+        <button type="submit" class="btn" id="authBtn">LOGIN</button>
+        <div class="social-login">
+          <button type="button" class="social-btn" onclick="googleLogin()"><i class="fab fa-google"></i></button>
+          <button type="button" class="social-btn" onclick="facebookLogin()"><i class="fab fa-facebook-f"></i></button>
+          <button type="button" class="social-btn" onclick="twitterLogin()"><i class="fab fa-twitter"></i></button>
+        </div>
+        <div class="footer-links">
+          <a onclick="toggleForm(true)">New User? <b>Signup</b></a>
+          <a onclick="toggleForm(false)">Already have an account? <b>Login</b></a>
+          <a onclick="resetPassword()">Forgot your password?</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/login.js"></script>
+</body>
+</html>

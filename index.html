@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Safelyne - Emergency Safety Platform</title>
+   <style>
+    * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+  
+  body {
+    background-color: #0a1929;
+    color: #e7e7e7;
+    min-height: 100vh;
+    line-height: 1.5;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+      sans-serif;
+    overflow-x: hidden;
+  }
+  
+  .grid {
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0.3;
+    z-index: -1;
+    max-width: 60%;
+    height: auto;
+  }
+  
+  .glow {
+    height: 0;
+    width: 30vw;
+    position: absolute;
+    top: 15%;
+    right: -5%;
+    box-shadow: 0 0 10vw 5vw rgba(41, 121, 255, 0.2);
+    rotate: -30deg;
+    z-index: -1;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 90vw;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0;
+    z-index: 999;
+  }
+  
+  header h1 {
+    margin: 0;
+    font-weight: 600;
+    font-size: 2.5rem;
+    background: linear-gradient(90deg, #4d94ff, #0050c9);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: -0.05em;
+  }
+  
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  
+  nav a {
+    font-size: 1rem;
+    letter-spacing: 0.1rem;
+    transition: all 0.3s ease;
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  nav a:hover {
+    color: #4d94ff;
+  }
+  
+  nav button {
+    background-color: transparent;
+    color: #e7e7e7;
+    padding: 0.8rem 1.5rem;
+    border: 1px solid #0050c9;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 2rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  nav button:hover {
+    background-color: #0050c9;
+    color: white;
+    box-shadow: 0 0 15px rgba(0, 80, 201, 0.5);
+  }
+  
+  main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: calc(100vh - 6rem);
+    padding: 2rem 0;
+  }
+  
+  .content {
+    max-width: 40rem;
+    margin-left: 5%;
+    z-index: 10;
+    padding: 2rem 0;
+  }
+  
+  .tagbox {
+    position: relative;
+    width: 12rem;
+    height: 2.5rem;
+    border-radius: 2rem;
+    background: linear-gradient(
+      to right,
+      #656565,
+      #4d94ff,
+      #0050c9,
+      #003d9c,
+      #4d94ff,
+      #656565
+    );
+    background-size: 200%;
+    animation: animationGradient 3s linear infinite;
+    box-shadow: 0 0 15px rgba(0, 80, 201, 0.3);
+  }
+  
+  @keyframes animationGradient {
+    0% {
+      background-position: 0%;
+    }
+    100% {
+      background-position: 200%;
+    }
+  }
+  
+  .tagbox .tag {
+    position: absolute;
+    inset: 3px;
+    background-color: rgba(10, 25, 41, 0.7);
+    border-radius: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s ease;
+    cursor: pointer;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+  
+  .tagbox .tag:hover {
+    color: #4d94ff;
+  }
+  
+  .content h1 {
+    font-size: 4.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 1.5rem 0;
+    line-height: 1.1;
+    background: linear-gradient(90deg, #ffffff, #4d94ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 20px rgba(77, 148, 255, 0.2);
+  }
+  
+  .description {
+    font-size: 1.25rem;
+    letter-spacing: 0.02em;
+    max-width: 35rem;
+    color: #a7a7a7;
+    margin-bottom: 1rem;
+  }
+  
+  .buttons {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  
+  .btn-getstarted {
+    text-decoration: none;
+    border: 1px solid #1a3a5a;
+    color: #e7e7e7;
+    padding: 0.8rem 1.5rem;
+    border-radius: 2rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+    background-color: transparent;
+  }
+  
+  .btn-getstarted:hover {
+    background-color: #0c2747;
+    border-color: #003d9c;
+  }
+  
+  .btn-signin {
+    text-decoration: none;
+    background: linear-gradient(90deg, #0050c9, #4d94ff);
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 2rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 80, 201, 0.3);
+  }
+  
+  .btn-signin:hover {
+    box-shadow: 0 0 20px rgba(0, 80, 201, 0.6);
+    transform: translateY(-2px);
+  }
+  
+  .purple-dot {
+    display: inline-block;
+    color: #4d94ff;
+    font-weight: bold;
+    margin-right: 0.1em;
+  }
+  header h1.logo {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+  }
+  
+  .logo .play2 {
+    background: linear-gradient(90deg, #0050c9, #4d94ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  .logo .learn {
+    background: linear-gradient(90deg, #ffffff, #aaaaaa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  /* Margin adjustments */
+  .content {
+    max-width: 42rem;
+    padding: 3rem 1.5rem;
+    z-index: 10;
+  }
+  .testing{
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  left: 30%;
+  }
+  .navbartext{
+  font-weight: bold;
+  }
+  /* Navbar link hover effect */
+  nav a.navbartext {
+  position: relative;
+  font-weight: bold;
+  color: inherit;
+  transition: color 0.3s ease;
+  }
+  
+  nav a.navbartext::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  left: 0;
+  bottom: -4px;
+  background: linear-gradient(90deg, #0050c9, #4d94ff);
+  transition: width 0.3s ease;
+  }
+  
+  nav a.navbartext:hover {
+  color: #4d94ff;
+  }
+  
+  nav a.navbartext:hover::after {
+  width: 100%;
+  }
+  
+  /* Navbar button enhancement */
+  nav button.btn-signin {
+  background: linear-gradient(90deg, #0050c9, #4d94ff);
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(77, 148, 255, 0.4);
+  transition: all 0.3s ease;
+  }
+  
+  nav button.btn-signin:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 0 20px rgba(77, 148, 255, 0.6);
+  }
+  
+  /* Logo hover effect */
+  header h1.logo {
+  cursor: pointer;
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+  }
+  
+  header h1.logo:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 10px rgba(77, 148, 255, 0.4);
+  }
+  
+  @media (max-width: 768px) {
+    header {
+      flex-direction: column;
+      gap: 1rem;
+      text-align: center;
+    }
+  
+    .content {
+      margin-left: 0;
+      text-align: center;
+      padding: 1rem;
+    }
+  
+    .content h1 {
+      font-size: 3rem;
+    }
+  
+    .tagbox {
+      margin: 0 auto;
+    }
+  
+    .buttons {
+      justify-content: center;
+    }
+  
+    .grid {
+      opacity: 0.15;
+    }
+  }
+   </style>
+
+   <style>
+    .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            color: #4d94ff;
+            font-size: 1.8rem;
+        }
+
+        header h1.logo {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.05em;
+        }
+
+        .logo .play2 {
+            background: linear-gradient(90deg, #0050c9, #4d94ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .logo .learn {
+            background: linear-gradient(90deg, #ffffff, #aaaaaa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+   </style>
+   </head>
+  <body>
+    <img class="grid" src="gradient.png" alt="Background gradient" />
+    <div class="glow"></div>
+    <div class="container">
+      <header style="margin-top: 1vw;">
+        <div class="logo-container">
+          <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+          <h1 class="logo"><span class="play2">Safe</span><span class="learn">lyne</span></h1>
+      </div>
+      </header>
+
+      <main>
+        <div class="content">
+          <div class="tagbox">
+            <div class="tag">
+              Introducing <span class="purple-dot">⚡</span>
+            </div>
+          </div>
+          <h1 style="font-family: Arial, Helvetica, sans-serif">
+            Emergency Help When You<br />Need It Most
+          </h1>
+          <p class="description">
+            Safelyne connects you instantly with emergency services at the push of a button. Our advanced platform alerts nearby police stations or hospitals with your exact location, ensuring help arrives as quickly as possible
+          </p>
+
+          <div class="buttons">
+            <a href="login.html" class="btn-signin">Get Started</a>
+          </div>
+        </div>
+
+      </main>
+    <spline-viewer class="testing"  url="https://prod.spline.design/NvUhbeRG7TwA8xa9/scene.splinecode"></spline-viewer>
+
+    </div>
+
+<!-- CSS Styles for Modal -->
+<style>
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 25, 41, 0.7);
+    z-index: 999;
+    backdrop-filter: blur(5px);
+  }
+  
+  .modal-content {
+    position: relative;
+    background-color: #0f2744;
+    margin: 10% auto;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(77, 148, 255, 0.4);
+    border: 1px solid #1a3a5a;
+    padding: 40px;
+    animation: modalOpen 0.4s ease;
+  }
+  
+  @keyframes modalOpen {
+    from {opacity: 0; transform: translateY(-30px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+  
+  .close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    color: #777;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .close:hover {
+    color: #4d94ff;
+  }
+  
+  .modal-content h2 {
+    margin-bottom: 25px;
+    font-size: 28px;
+    background: linear-gradient(90deg, #ffffff, #4d94ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #0c2747;
+    border: 1px solid #1a3a5a;
+    color: #e7e7e7;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .form-group input:focus {
+    outline: none;
+    border-color: #0050c9;
+    box-shadow: 0 0 10px rgba(0, 80, 201, 0.3);
+  }
+  
+  .btn-submit {
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #0050c9, #4d94ff);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 0 10px rgba(77, 148, 255, 0.3);
+  }
+  
+  .btn-submit:hover {
+    box-shadow: 0 0 20px rgba(77, 148, 255, 0.6);
+    transform: translateY(-2px);
+  }
+  
+  .message {
+    margin: 10px 0;
+    font-size: 14px;
+    text-align: center;
+    min-height: 20px;
+  }
+  
+  .error {
+    color: #ff6b6b;
+  }
+  
+  .success {
+    color: #00c896;
+  }
+</style>
+
+<script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.90/build/spline-viewer.js"></script>
+    
+  </body>
+</html>

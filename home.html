@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safelyne - Emergency Safety Platform</title>
+    <link rel="stylesheet" href="css/home.css">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Maps API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnKZLeLQvXat0WSFLFwTLbXDKpY0H_BuA&libraries=places,geometry&callback=initMap" async defer></script>
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <p>Initializing Safety Platform...</p>
+    </div>
+
+    <!-- Header Bar -->
+    <div class="header">
+        <div class="logo">
+            <i class="fas fa-shield-alt logo-icon"></i>
+            Safelyne
+        </div>
+        <div class="header-controls">
+            <div class="status-indicator">
+                <div class="status-dot"></div>
+                <span>Protected</span>
+            </div>
+
+            <a href="Setup.html">
+                <button class="control-button" id="settingsButton">
+                      <i class="fas fa-cog"></i>
+                </button>
+            </a>
+
+        </div>
+    </div>
+
+    <!-- Map Container -->
+    <div id="map"></div>
+
+    <!-- Map Legend -->
+    <div class="legend">
+        <h3>Map Legend</h3>
+        <div class="legend-item">
+            <div class="legend-icon current-location"></div>
+            <span>Current Location</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-icon safe-route"></div>
+            <span>Safe Route</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-icon danger-zone"></div>
+            <span>Danger Zone</span>
+        </div>
+    </div>
+
+    <!-- Controls Panel -->
+    <div class="controls-panel">
+        <button class="control-button" id="locateButton" title="My Location">
+            <i class="fas fa-location-arrow"></i>
+        </button>
+        <button class="control-button" id="routeButton" title="Find Safe Route">
+            <i class="fas fa-route"></i>
+        </button>
+        <button class="control-button" id="shareButton" title="Share Location">
+            <i class="fas fa-share-alt"></i>
+        </button>
+    </div>
+
+    <!-- SOS Buttons -->
+    <div class="sos-button-container">
+        <div class="sos-button-wrapper">
+            <a href="chats.html"><button class="sos-button police-button" id="policeButton">
+                <i class="fas fa-shield-alt"></i>
+            </button></a>
+            <div class="button-label">Police</div>
+        </div>
+        <div class="sos-button-wrapper">
+            <a href="chats.html"><button class="sos-button ambulance-button" id="ambulanceButton">
+                <i class="fas fa-ambulance"></i>
+            </button></a>
+            <div class="button-label">Ambulance</div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">Notification message here</div>
+
+    <script src="js/home.js"></script>
+    
+</body>
+</html>

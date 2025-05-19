@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safelyne - Emergency Safety Platform</title>
+    <link rel="stylesheet" href="css/Setup.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header Bar -->
+    <div class="header">
+        <div class="logo">
+            <i class="fas fa-shield-alt logo-icon"></i>
+            Safelyne
+        </div>
+        <div class="header-controls">
+            <button class="btn btn-secondary" id="saveButton">
+                <i class="fas fa-save"></i> Save
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="section">
+            <h2 class="section-title">Emergency Triggers</h2>
+            <div class="setting-item">
+                <div class="setting-label">
+                    <div class="setting-name">Voice-activated Trigger</div>
+                    <div class="setting-description">Activate emergency mode with a voice command</div>
+                </div>
+                <div class="toggle-container">
+                    <label class="switch">
+                        <input type="checkbox" id="voiceTrigger" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="setting-item">
+                <div class="setting-label">
+                    <div class="setting-name">Code Word Trigger</div>
+                    <div class="setting-description">Use a secret code word to activate emergency mode</div>
+                </div>
+                <div class="toggle-container">
+                    <label class="switch">
+                        <input type="checkbox" id="codeWordTrigger" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="codeword-container" id="codewordContainer">
+                <div class="form-group">
+                    <label for="codeword">Your Secret Code Word</label>
+                    <input type="text" class="form-control" id="codeword" placeholder="Enter your secret code word">
+                    <small style="color: #cccccc; display: block; margin-top: 5px;">This word will trigger emergency mode when spoken or typed</small>
+                </div>
+            </div>
+            
+            <div class="setting-item">
+                <div class="setting-label">
+                    <div class="setting-name">Gesture-based Trigger</div>
+                    <div class="setting-description">Activate by shaking your phone or using button combinations</div>
+                </div>
+                <div class="toggle-container">
+                    <label class="switch">
+                        <input type="checkbox" id="gestureTrigger" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Emergency Contacts</h2>
+            <ul class="contact-list" id="contactList">
+                <li class="contact-item">
+                    <div class="contact-info">
+                        <div class="contact-name">John Smith</div>
+                        <div class="contact-phone">+1 (555) 123-4567</div>
+                    </div>
+                    <div class="contact-actions">
+                        <button title="Edit"><i class="fas fa-edit"></i></button>
+                        <button title="Delete"><i class="fas fa-trash-alt"></i></button>
+                    </div>
+                </li>
+                <li class="contact-item">
+                    <div class="contact-info">
+                        <div class="contact-name">Lisa Johnson</div>
+                        <div class="contact-phone">+1 (555) 987-6543</div>
+                    </div>
+                    <div class="contact-actions">
+                        <button title="Edit"><i class="fas fa-edit"></i></button>
+                        <button title="Delete"><i class="fas fa-trash-alt"></i></button>
+                    </div>
+                </li>
+            </ul>
+            <button class="btn btn-add btn-block" id="addContactBtn">
+                <i class="fas fa-plus"></i> Add Emergency Contact
+            </button>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Offline Mode Settings</h2>
+            <div class="setting-item">
+                <div class="setting-label">
+                    <div class="setting-name">Auto-SMS Mode</div>
+                    <div class="setting-description">Send SMS with location when no internet connection</div>
+                </div>
+                <div class="toggle-container">
+                    <label class="switch">
+                        <input type="checkbox" id="autoSmsMode" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="emergencyMessage">Default Emergency Message</label>
+                <textarea class="form-control" id="emergencyMessage" rows="3" placeholder="Enter your default emergency message">I need help! This is an emergency. My location is being shared with you.</textarea>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Alert System</h2>
+            <p>Configure your smart alert categories:</p>
+            
+            <div class="form-group">
+                <label for="redAlert">Red Alert (Physical Danger)</label>
+                <input type="text" class="form-control" id="redAlert" value="I am in immediate physical danger and need urgent help.">
+            </div>
+            
+            <div class="form-group">
+                <label for="yellowAlert">Yellow Alert (Feeling Unsafe)</label>
+                <input type="text" class="form-control" id="yellowAlert" value="I feel unsafe and need assistance. Please check on me.">
+            </div>
+            
+            <div class="form-group">
+                <label for="blueAlert">Blue Alert (Medical Emergency)</label>
+                <input type="text" class="form-control" id="blueAlert" value="I need medical assistance. Please send help.">
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Advanced Settings</h2>
+            <div class="setting-item">
+                <div class="setting-label">
+                    <div class="setting-name">AI-based Risk Detection</div>
+                    <div class="setting-description">Use AI to detect potential danger patterns</div>
+                </div>
+                <div class="toggle-container">
+                    <label class="switch">
+                        <input type="checkbox" id="aiRiskDetection" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="setting-item">
+                <div class="setting-label">
+                    <div class="setting-name">Multilingual Support</div>
+                    <div class="setting-description">Enable support for multiple languages</div>
+                </div>
+                <div class="toggle-container">
+                    <label class="switch">
+                        <input type="checkbox" id="multilingualSupport" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="setting-item">
+                <div class="setting-label">
+                    <div class="setting-name">Resource Mapping</div>
+                    <div class="setting-description">Show nearby emergency resources</div>
+                </div>
+                <div class="toggle-container">
+                    <label class="switch">
+                        <input type="checkbox" id="resourceMapping" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="btn-group">
+            <button class="btn btn-primary btn-block" id="saveSettingsBtn">Save Settings</button>
+            <a href="home.html" class="btn btn-secondary btn-block">Return to Map</a>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">Settings saved successfully</div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>Safelyne Emergency Safety Platform &copy; 2025</p>
+    </div>
+
+    <script src="js/Setup.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
